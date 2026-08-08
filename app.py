@@ -38,7 +38,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# 🔑 LOGIN SYSTEM
+# LOGIN SYSTEM
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
