@@ -38,7 +38,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# LOGIN SYSTEM
+# 🔑 LOGIN SYSTEM
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
@@ -78,7 +78,7 @@ try:
 except Exception as e:
     st.error("⚠️ Supabase Credentials `.streamlit/secrets.toml` mein check karein.")
 
-# 3. Data Load Function (6 Subjects)
+# 3. Data Load Function (Forced 6 Subjects)
 def load_data():
     try:
         response = supabase.table('class_8_students').select('*').order('roll_no').execute()
@@ -493,7 +493,7 @@ with tab6:
 
         nb_cols = ['roll_no', 'name', 'eng_nb', 'hindi_nb', 'sci_nb', 'sst_nb', 'math_nb', 'sans_nb']
         nb_df = df[[c for c in nb_cols if c in df.columns]]
-        styled_nb_df = nb_df.style.map(highlight_nb, subset=['eng_nb', 'hindi_nb', 'sci_nb', 'sst_nb', 'math_nb', 'sans_nb'])
+        styled_nb_df = nb_df.style.map(highlight_nb, subset=[c for c in ['eng_nb', 'hindi_nb', 'sci_nb', 'sst_nb', 'math_nb', 'sans_nb'] if c in nb_df.columns])
         st.dataframe(styled_nb_df, use_container_width=True, hide_index=True)
 
     else:
