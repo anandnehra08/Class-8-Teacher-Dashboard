@@ -78,7 +78,7 @@ try:
 except Exception as e:
     st.error("⚠️ Supabase Credentials `.streamlit/secrets.toml` mein check karein.")
 
-# 3. Data Load Function (Forced 6 Subjects)
+# 3. Data Load Function
 def load_data():
     try:
         response = supabase.table('class_8_students').select('*').order('roll_no').execute()
